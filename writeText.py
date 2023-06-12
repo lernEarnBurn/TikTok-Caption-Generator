@@ -16,15 +16,15 @@ def add_caption_overlay(video_path, srt_path):
 
     for caption in subs:
         start_time = dt.combine(reference_date, caption.start.to_time())
+        start_time_float = (start_time - reference_date).total_seconds()
         end_time = dt.combine(reference_date, caption.end.to_time())
         caption_text = caption.text_without_tags
 
-        duration = end_time - start_time
-        duration_seconds = (start_time - reference_date).total_seconds()
+        duration_seconds = (end_time - start_time).total_seconds()
 
         text = TextClip(caption_text, fontsize=40, color='white', font='Arial', method='caption')
 
-        text = text.set_position(('center', 'bottom')).set_start(duration_seconds).set_duration(duration.total_seconds())
+        text = text.set_position(('center', 'bottom')).set_start(start_time_float).set_duration(duration_seconds)
 
         clips.append(text)
 
