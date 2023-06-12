@@ -22,15 +22,15 @@ def add_caption_overlay(video_path, srt_path):
 
         duration_seconds = (end_time - start_time).total_seconds()
 
-        text = TextClip(caption_text, fontsize=40, color='white', font='Arial', method='caption')
+        text = TextClip(caption_text, fontsize=55, color='white', font='Corbel', method='caption', stroke_color='white', stroke_width=2.0)
 
-        text = text.set_position(('center', 'bottom')).set_start(start_time_float).set_duration(duration_seconds)
+        text = text.set_position(('center')).set_start(start_time_float).set_duration(duration_seconds)
 
         clips.append(text)
 
     final_clip = CompositeVideoClip([video] + clips)
     final_clip = final_clip.set_duration(video.duration)
-    final_clip.write_videofile('./output/testVid.mp4', codec='libx264', audio_codec='aac')
+    final_clip.write_videofile('../output/testVid.mp4', codec='libx264', audio_codec='aac')
 
 if __name__ == "__main__":
-    add_caption_overlay('./testVid.mp4', './srtFiles/testVid.srt')
+    add_caption_overlay('../testVid.mp4', '../srtFiles/testVid.srt')
