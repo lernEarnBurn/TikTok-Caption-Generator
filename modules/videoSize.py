@@ -5,5 +5,5 @@ def get_video_dimensions(video_path):
     height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
     width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
     
-    return width, height
+    return (width * 0.9), height
 
