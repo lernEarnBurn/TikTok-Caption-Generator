@@ -28,9 +28,9 @@ def add_caption_overlay(video_path, srt_path):
         screensize = get_video_dimensions(video_path)
         
 
-        text = TextClip(caption_text, fontsize=55, color='white', font='Corbel', method='caption', stroke_color='white', stroke_width=2.5, size=screensize)
+        text = TextClip(caption_text, fontsize=75, color='white', font='Georgia-Bold', method='caption', stroke_color='white', stroke_width=2.5, size=screensize)
 
-        text = text.set_position(('center')).set_start(start_time_float).set_duration(duration_seconds)
+        text = text.set_position(lambda t: ('center', 175-t) ).set_start(start_time_float).set_duration(duration_seconds)
 
         clips.append(text)
 

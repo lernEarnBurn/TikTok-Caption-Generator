@@ -16,6 +16,8 @@ def main():
     transcribe_audio(file_path)
     add_caption_overlay(file_path, f'./srtFiles/{file_name}.srt')
 
+    print('\n\nVideo Complete')
+
 if __name__ == "__main__" :
     main()
     #add_caption_overlay('./testVid.mp4', './srtFiles/testVid.srt')

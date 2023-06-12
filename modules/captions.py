@@ -14,7 +14,6 @@ def transcribe_audio(path):
     video_filename = os.path.splitext(os.path.basename(path))[0]
 
     for segment in segments:
-        print(segment)
         start_time = timedelta(seconds=float(segment['start']))
         end_time = timedelta(seconds=float(segment['end']))
 
@@ -31,5 +30,7 @@ def transcribe_audio(path):
         srt_filename = os.path.join("./SrtFiles", f"{video_filename}.srt")
         with open(srt_filename, 'a', encoding='utf-8') as srt_file:
             srt_file.write(segment_content)
+
+    print('\n\nSRT generated')
 
     return srt_filename
